@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<title>新选择器</title>
+	<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+	<style type="text/css">
+		.newselecter_div{
+			width:37px;height:24px;display:inline-block;border:1px solid #ccc;
+		}
+		.newselecter_p{
+			font-size:14px;text-align:center;margin:0px;line-height:24px;
+		}
+		.newselecter_div_click{
+			width:37px;height:24px;display:inline-block;border:1px solid #ccc;background: url(icon2/right-icon.gif) no-repeat 100% 100%;
+border: 1px solid #A10000;
+		}
+	</style>
+</head>
+<body>
+<div id="test">
+	<div class="newselecter_div" >
+		<p class="newselecter_p" >1</p>
+	</div>
+	<div class="newselecter_div" >
+		<p class="newselecter_p" >2</p>
+	</div>
+	<div class="newselecter_div" >
+		<p class="newselecter_p" >3</p>
+	</div>
+</div>
+<script type="text/javascript">
+	$(function(){   
+	$('.newselecter_div').click(function(){
+		 thisselecter=$(this);
+		 thisselecter.prevAll().removeClass('newselecter_div_click');
+		 thisselecter.nextAll().removeClass('newselecter_div_click');
+		 thisselecter.addClass('newselecter_div_click');
+		
+		
+	    });		
+
+    });
+
+	function GetThevalue(id){
+	   var obj=	$(id).find(".newselecter_div_click");
+	    return obj.children().html();
+	}
+
+
+	function InsertSelecter(arr,id){
+		var content="";
+
+		for (var i=0;i<arr.length;i++){
+				content=content+"<div class=\"newselecter_div\"><p class=\"newselecter_p\">"+arr[i]+"</p></div>"; 
+		}
+		$(id).html(content);
+		$('.newselecter_div').click(function(){
+				 thisselecter=$(this);
+				 thisselecter.prevAll().removeClass('newselecter_div_click');
+				 thisselecter.nextAll().removeClass('newselecter_div_click');
+				 thisselecter.addClass('newselecter_div_click');
+		
+		
+	});	
+	}
+
+</script>
+
+</body>
+</html>
